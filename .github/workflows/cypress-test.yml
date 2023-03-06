@@ -9,10 +9,6 @@ on:
         description: 'Which branch to checkout and run test'
         required: false
         default: master
-      spec:
-        description: 'Test spec'
-        required: false
-        default: 'cypress/e2e/*.cy.js'
 
 jobs:
   checkout-and-test:
@@ -26,5 +22,4 @@ jobs:
       - name: Run cypress tests
         uses: cypress-io/github-action@v4
         with:
-          command: npx cypress run --spec ${{ github.event.inputs.spec }}
           browser: chrome
