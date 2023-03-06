@@ -1,6 +1,3 @@
-/* eslint-disable no-unreachable-loop */
-/* eslint-disable no-loop-func */
-
 /**
  * Base actions that are common to all pages
  */

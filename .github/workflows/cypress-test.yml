@@ -1,0 +1,27 @@
+name: Cypress test
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Which branch to checkout and run test'
+        required: false
+        default: master
+      spec:
+        description: 'Test spec'
+        required: false
+        default: 'cypress/e2e/*.cy.js'
+
+jobs:
+  checkout-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      
+      - name: Run cypress tests
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          start: npx cypress run --spec ${{ github.event.inputs.spec }}
