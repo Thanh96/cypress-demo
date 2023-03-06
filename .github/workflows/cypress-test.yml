@@ -24,7 +24,7 @@ jobs:
           ref: ${{ github.event.inputs.branch }}
       
       - name: Run cypress tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
-          build: npm run build
-          start: npx cypress run --spec ${{ github.event.inputs.spec }}
+          command: npx cypress run --spec ${{ github.event.inputs.spec }}
+          browser: chrome
